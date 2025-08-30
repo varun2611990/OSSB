@@ -28,8 +28,16 @@ backend:
   # This is for local development only, it is not recommended to use this in production
   # The production database configuration is stored in app-config.production.yaml
   database:
-    client: better-sqlite3
-    connection: ':memory:'
+    client: pg
+    connection:
+      host: ${POSTGRES_HOST:-localhost}
+      port: ${POSTGRES_PORT:-5432}
+      user: ${POSTGRES_USER:-backstage}
+      password: ${POSTGRES_PASSWORD:-backstage}
+      database: ${POSTGRES_DB:-backstage}
+    # Fallback to SQLite for quick local development if PostgreSQL is not available
+    # client: better-sqlite3
+    # connection: ':memory:'
   # workingDirectory: /tmp # Use this to configure a working directory for the scaffolder, defaults to the OS temp-dir
 
 integrations:
@@ -85,6 +93,36 @@ catalog:
     # Local example template
     - type: file
       target: ../../examples/template/template.yaml
+      rules:
+        - allow: [Template]
+
+    # React Frontend Template
+    - type: file
+      target: ../../examples/templates/react-frontend/template.yaml
+      rules:
+        - allow: [Template]
+
+    # Next.js App Template
+    - type: file
+      target: ../../examples/templates/nextjs-app/template.yaml
+      rules:
+        - allow: [Template]
+
+    # Express Backend Template
+    - type: file
+      target: ../../examples/templates/express-backend/template.yaml
+      rules:
+        - allow: [Template]
+
+    # Azure Infrastructure Template
+    - type: file
+      target: ../../examples/templates/azure-infrastructure/template.yaml
+      rules:
+        - allow: [Template]
+
+    # Terraform Azure Template
+    - type: file
+      target: ../../examples/templates/terraform-azure/template.yaml
       rules:
         - allow: [Template]
 
