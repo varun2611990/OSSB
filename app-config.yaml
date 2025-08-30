@@ -28,8 +28,16 @@ backend:
   # This is for local development only, it is not recommended to use this in production
   # The production database configuration is stored in app-config.production.yaml
   database:
-    client: better-sqlite3
-    connection: ':memory:'
+    client: pg
+    connection:
+      host: ${POSTGRES_HOST:-localhost}
+      port: ${POSTGRES_PORT:-5432}
+      user: ${POSTGRES_USER:-backstage}
+      password: ${POSTGRES_PASSWORD:-backstage}
+      database: ${POSTGRES_DB:-backstage}
+    # Fallback to SQLite for quick local development if PostgreSQL is not available
+    # client: better-sqlite3
+    # connection: ':memory:'
   # workingDirectory: /tmp # Use this to configure a working directory for the scaffolder, defaults to the OS temp-dir
 
 integrations:
@@ -38,10 +46,10 @@ integrations:
       # This is a Personal Access Token or PAT from GitHub. You can find out how to generate this token, and more information
       # about setting up the GitHub integration here: https://backstage.io/docs/integrations/github/locations#configuration
       token: ${GITHUB_TOKEN}
-    ### Example for how to add your GitHub Enterprise instance using the API:
-    # - host: ghe.example.net
-    #   apiBaseUrl: https://ghe.example.net/api/v3
-    #   token: ${GHE_TOKEN}
+      ### Example for how to add your GitHub Enterprise instance using the API:
+      # - host: ghe.example.net
+      #   apiBaseUrl: https://ghe.example.net/api/v3
+      #   token: ${GHE_TOKEN}
 
 proxy:
   ### Example for how to add a proxy endpoint for the frontend.
@@ -85,6 +93,42 @@ catalog:
     # Local example template
     - type: file
       target: ../../examples/template/template.yaml
+      rules:
+        - allow: [Template]
+
+    # React Frontend Template
+    - type: file
+      target: ../../examples/templates/react-frontend/template.yaml
+      rules:
+        - allow: [Template]
+
+    # Vue.js Frontend Template
+    - type: file
+      target: ../../examples/templates/vue-frontend/template.yaml
+      rules:
+        - allow: [Template]
+
+    # Next.js App Template
+    - type: file
+      target: ../../examples/templates/nextjs-app/template.yaml
+      rules:
+        - allow: [Template]
+
+    # Express Backend Template
+    - type: file
+      target: ../../examples/templates/express-backend/template.yaml
+      rules:
+        - allow: [Template]
+
+    # Azure Infrastructure Template
+    - type: file
+      target: ../../examples/templates/azure-infrastructure/template.yaml
+      rules:
+        - allow: [Template]
+
+    # Terraform Azure Template
+    - type: file
+      target: ../../examples/templates/terraform-azure/template.yaml
       rules:
         - allow: [Template]
 
