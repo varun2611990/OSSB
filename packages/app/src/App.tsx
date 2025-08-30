@@ -24,6 +24,7 @@ import { apis } from './apis';
 import { entityPage } from './components/catalog/EntityPage';
 import { searchPage } from './components/search/SearchPage';
 import { Root } from './components/Root';
+import { coolTheme } from './themes/coolTheme';
 
 import {
   AlertDisplay,
@@ -37,9 +38,36 @@ import { RequirePermission } from '@backstage/plugin-permission-react';
 import { catalogEntityCreatePermission } from '@backstage/plugin-catalog-common/alpha';
 import { NotificationsPage } from '@backstage/plugin-notifications';
 import { SignalsDisplay } from '@backstage/plugin-signals';
+import { themes, UnifiedThemeProvider } from '@backstage/theme';
 
 const app = createApp({
   apis,
+  themes: [
+    {
+      id: 'light',
+      title: 'Light',
+      variant: 'light',
+      Provider: ({ children }) => (
+        <UnifiedThemeProvider theme={themes.light} children={children} />
+      ),
+    },
+    {
+      id: 'dark',
+      title: 'Dark',
+      variant: 'dark',
+      Provider: ({ children }) => (
+        <UnifiedThemeProvider theme={themes.dark} children={children} />
+      ),
+    },
+    {
+      id: 'cool',
+      title: 'Cool',
+      variant: 'light',
+      Provider: ({ children }) => (
+        <UnifiedThemeProvider theme={coolTheme} children={children} />
+      ),
+    },
+  ],
   bindRoutes({ bind }) {
     bind(catalogPlugin.externalRoutes, {
       createComponent: scaffolderPlugin.routes.root,
