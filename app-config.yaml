@@ -46,10 +46,10 @@ integrations:
       # This is a Personal Access Token or PAT from GitHub. You can find out how to generate this token, and more information
       # about setting up the GitHub integration here: https://backstage.io/docs/integrations/github/locations#configuration
       token: ${GITHUB_TOKEN}
-    ### Example for how to add your GitHub Enterprise instance using the API:
-    # - host: ghe.example.net
-    #   apiBaseUrl: https://ghe.example.net/api/v3
-    #   token: ${GHE_TOKEN}
+      ### Example for how to add your GitHub Enterprise instance using the API:
+      # - host: ghe.example.net
+      #   apiBaseUrl: https://ghe.example.net/api/v3
+      #   token: ${GHE_TOKEN}
 
 proxy:
   ### Example for how to add a proxy endpoint for the frontend.
@@ -99,6 +99,12 @@ catalog:
     # React Frontend Template
     - type: file
       target: ../../examples/templates/react-frontend/template.yaml
+      rules:
+        - allow: [Template]
+
+    # Vue.js Frontend Template
+    - type: file
+      target: ../../examples/templates/vue-frontend/template.yaml
       rules:
         - allow: [Template]
 
