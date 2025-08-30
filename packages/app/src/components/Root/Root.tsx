@@ -4,6 +4,9 @@ import HomeIcon from '@material-ui/icons/Home';
 import ExtensionIcon from '@material-ui/icons/Extension';
 import LibraryBooks from '@material-ui/icons/LibraryBooks';
 import CreateComponentIcon from '@material-ui/icons/AddCircleOutline';
+import GitHubIcon from '@material-ui/icons/GitHub';
+import CloudIcon from '@material-ui/icons/Cloud';
+import TrendingUpIcon from '@material-ui/icons/TrendingUp';
 import LogoFull from './LogoFull';
 import LogoIcon from './LogoIcon';
 import {
@@ -77,6 +80,14 @@ export const Root = ({ children }: PropsWithChildren<{}>) => (
         <SidebarItem icon={LibraryBooks} to="docs" text="Docs" />
         <SidebarItem icon={CreateComponentIcon} to="create" text="Create..." />
         {/* End global nav */}
+        <SidebarDivider />
+        <SidebarGroup label="DevOps" icon={<CloudIcon />}>
+          <SidebarItem icon={GitHubIcon} to="github-actions" text="GitHub Actions" />
+        </SidebarGroup>
+        <SidebarDivider />
+        <SidebarGroup label="SaaS Management" icon={<TrendingUpIcon />}>
+          <SidebarItem icon={CloudIcon} to="tenant-manager" text="Tenant Manager" />
+        </SidebarGroup>
         <SidebarDivider />
         <SidebarScrollWrapper>
           {/* Items in this group will be scrollable if they run out of space */}
