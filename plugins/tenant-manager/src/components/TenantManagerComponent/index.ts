@@ -1,0 +1,1 @@
+export { TenantManagerComponent } from './TenantManagerComponent';

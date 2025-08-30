@@ -85,6 +85,10 @@ export const Root = ({ children }: PropsWithChildren<{}>) => (
           <SidebarItem icon={GitHubIcon} to="github-actions" text="GitHub Actions" />
         </SidebarGroup>
         <SidebarDivider />
+        <SidebarGroup label="SaaS Management" icon={<TrendingUpIcon />}>
+          <SidebarItem icon={CloudIcon} to="tenant-manager" text="Tenant Manager" />
+        </SidebarGroup>
+        <SidebarDivider />
         <SidebarScrollWrapper>
           {/* Items in this group will be scrollable if they run out of space */}
         </SidebarScrollWrapper>

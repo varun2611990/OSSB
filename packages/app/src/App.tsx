@@ -21,6 +21,7 @@ import { TechDocsAddons } from '@backstage/plugin-techdocs-react';
 import { ReportIssue } from '@backstage/plugin-techdocs-module-addons-contrib';
 import { UserSettingsPage } from '@backstage/plugin-user-settings';
 import { Router as GitHubActionsRouter } from '@backstage/plugin-github-actions';
+import { TenantManagerPage } from '../../../plugins/tenant-manager/src';
 import { apis } from './apis';
 import { entityPage } from './components/catalog/EntityPage';
 import { searchPage } from './components/search/SearchPage';
@@ -40,6 +41,7 @@ import { catalogEntityCreatePermission } from '@backstage/plugin-catalog-common/
 import { NotificationsPage } from '@backstage/plugin-notifications';
 import { SignalsDisplay } from '@backstage/plugin-signals';
 import { themes, UnifiedThemeProvider } from '@backstage/theme';
+import { TenantManagerPage } from '@internal/plugin-tenant-manager';
 
 const app = createApp({
   apis,
@@ -127,6 +129,8 @@ const routes = (
     <Route path="/catalog-graph" element={<CatalogGraphPage />} />
     <Route path="/notifications" element={<NotificationsPage />} />
     <Route path="/github-actions" element={<GitHubActionsRouter />} />
+    <Route path="/tenant-manager" element={<TenantManagerPage />} />
+    <Route path="/tenant-manager" element={<TenantManagerPage />} />
   </FlatRoutes>
 );
 
