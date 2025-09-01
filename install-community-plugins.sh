@@ -157,12 +157,16 @@ install_by_priority() {
         if install_plugin "$plugin_id" "$package_name" "app" "$plugin_id"; then
             install_backend_plugin "$plugin_id" "$package_name"
             ((success_count++))
+        else
+            echo -e "${YELLOW}⚠️  Failed to install $plugin_id, continuing with next plugin...${NC}"
         fi
         echo ""
     done
     
     echo -e "${BLUE}📊 Priority $priority Summary: $success_count/$total_count plugins installed${NC}"
     echo ""
+    
+    return $success_count
 }
 
 # Function to list all plugins

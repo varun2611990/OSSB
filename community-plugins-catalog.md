@@ -4,8 +4,8 @@ This document tracks all available community plugins from the [backstage/communi
 
 **Last Updated**: December 2024  
 **Total Available Plugins**: 96  
-**Installed**: 0  
-**Installation Progress**: 0%
+**Installed**: 6  
+**Installation Progress**: 6%
 
 ## 📊 Plugin Categories Overview
 
