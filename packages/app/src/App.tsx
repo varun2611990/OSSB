@@ -21,6 +21,10 @@ import { TechDocsAddons } from '@backstage/plugin-techdocs-react';
 import { ReportIssue } from '@backstage/plugin-techdocs-module-addons-contrib';
 import { UserSettingsPage } from '@backstage/plugin-user-settings';
 import { Router as GitHubActionsRouter } from '@backstage/plugin-github-actions';
+
+// Community Plugins - P0 Critical
+// TODO: Add proper imports once we verify the export names
+
 import { apis } from './apis';
 import { entityPage } from './components/catalog/EntityPage';
 import { searchPage } from './components/search/SearchPage';
@@ -129,7 +133,13 @@ const routes = (
     <Route path="/notifications" element={<NotificationsPage />} />
     <Route path="/github-actions" element={<GitHubActionsRouter />} />
     <Route path="/tenant-manager" element={<TenantManagerPage />} />
-    <Route path="/tenant-manager" element={<TenantManagerPage />} />
+    
+    {/* Community Plugins Routes - P0 Critical */}
+    {/* TODO: Add proper components once imports are configured */}
+    {/* <Route path="/community/github-issues" element={<div>GitHub Issues Plugin</div>} /> */}
+    {/* <Route path="/community/github-actions" element={<div>GitHub Actions Plugin</div>} /> */}
+    {/* <Route path="/community/grafana" element={<div>Grafana Plugin</div>} /> */}
+    {/* <Route path="/community/sonarqube" element={<div>SonarQube Plugin</div>} /> */}
   </FlatRoutes>
 );
 
